@@ -1,0 +1,76 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-10-15 09:11:02
+ * @LastEditTime: 2021-10-15 10:17:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \web面试题手写\手写防抖及其案列.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>防抖事件</h3>
+    <p>定义：持续触发事件，一定时间内没有触发事件，<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;事件处理函数只会执行一次，当设定的时间内触发过一次事件后会重新开始延时
+    </p>
+    <p>例：输入框的事件（500ms显示内容，不是实时刷新显示内容），对比输入框的内容事件。实时刷新效果</p>
+    <input type="text" id="pt">
+    <p id="p"></p>
+
+    <script>
+        // 获取input标签、
+        let pt = document.getElementById("pt")
+        let debounceFn = debounce(500, showText)
+        pt.addEventListener("input", function () {
+            aFn()
+            debounceFn(this.value)
+
+        })
+        // 显示内容
+        function showText(value) {
+            // 获取显示内容的p标签
+            let p = document.getElementById("p")
+            p.innerText = value
+        }
+        /**
+         * @description: 防抖函数
+         * @param {*} delay  时间 延迟多少执行一次
+         * @param {*} callback 回调函数
+         * @return {*}
+         */
+        function debounce(delay, callback) {
+            let timer = null
+            return function (value) {
+                // 闭包内存泄漏
+                clearInterval(timer)
+                timer = setTimeout(function () {
+                    callback(value)
+                }, delay)
+            }
+        }
+
+
+        function a() {
+            let aa = 0
+            return function () {
+                aa++
+                console.log(aa);
+            }
+        }
+        var aFn = a()
+
+
+
+
+
+    </script>
+</body>
+
+</html>

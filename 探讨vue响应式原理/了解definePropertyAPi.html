@@ -1,0 +1,85 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-27 09:09:36
+ * @LastEditTime: 2021-09-27 10:17:57
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \web面试题手写\探讨vue响应式原理\了解definePropertyAPi.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let xing = {
+            name: "喜羊羊",
+            age: 20
+        }
+        /**
+         * @description: 语法 Object.defineProperty(obj,prop,descriptor)
+         * @param {object} obj 必须。目标对象
+         * @param {string} prop 必须。对象需要定义或修改的属性名
+         * @param {object} descriptor 必须。目标属性所拥有的特性
+         ** descriptor所拥有的特性 value writable enumerable configurable getter/setter
+         ** value : 设置属性的值 默认undefined
+         ** writable ： 值是否可以重写 。 type {Boolean}
+         ** enumerable ： 目标是否可以被枚举（使用for...in或者Object.keys()） 。 type {Boolean}
+         ** configgurable ： 目标属性是否可以被删除或是否可以再次修改特性 。 type {Boolean}
+         ** getter ： 获取属性值的方法
+         ** setter :  设置属性值的方法
+         */
+        let val = 0
+        Object.defineProperty(xing, "age", {
+            enumerable: true,
+            configurable: true,
+            get() {
+                console.log("age属性被读取了");
+                return val
+            },
+            set(newVal) {
+                console.log("age属性被修改了");
+                val = newVal
+            }
+        })
+        val = 40
+        console.log(xing.age);
+
+        // 封装
+        /**
+         * @description: 
+         * @param {object} 目标对象
+         * @param {string} key 目标对象的key
+         * @param {object} val 目标对象的某个key的值
+         * @return {*}
+         */
+        function def(obj, key, value) {
+            //  如果值传了obj和key，那么value = obj[key]
+            if (arguments.length === 2) {
+                value = obj[key]
+            }
+            Object.defineProperty(obj, key, {
+                enumerable: true,
+                configurable: true,
+                get() {
+                    console.log(`${key}被读取了`);
+                    return value
+                },
+                set(newVal) {
+                    console.log(`${key}被修改成了${newVal}`);
+                    value = newVal
+                }
+            })
+        }
+
+
+    </script>
+</body>
+
+</html>

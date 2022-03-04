@@ -1,0 +1,75 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-10-15 09:59:56
+ * @LastEditTime: 2021-10-15 14:16:44
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \web面试题手写\手写节流及其案例.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>节流事件</h3>
+    <p>定义：一段事件只调用一次事件处理函数</p>
+    <p>实际用例：提交事件、游戏的技能cd（在游戏cd中点击n次都不会发动技能）</p>
+    <p>3秒内点击一次</p>
+    <button id="btn">点击触发技能</button>
+    <input type="submit" id="skillTriger" value="发动技能" />
+    <div class='skillEvent' id="skillEventId"></div>
+    <script>
+
+        // 获取元素
+        let btn = document.getElementById('btn')
+
+        btn.addEventListener("click", function () {
+            throttleFn(this.innerText)
+        })
+
+        let throttleFn = throttle(3000, countDown)
+        // 修改文本显示倒计时
+        function countDown(value) {
+            let count = 3
+            let timer = null
+            timer = setInterval(() => {
+                count--;
+                btn.innerText = count + "秒"
+                if (count == 0) {
+                    clearInterval(timer)
+                    btn.innerText = "点击触发技能"
+                }
+            }, 1000)
+        }
+
+
+
+        /**
+         * @description: 节流函数
+         * @param {*} wait 本时间段内不执行
+         * @param {*} callback 回调函数
+         * @return {*}
+         */
+        function throttle(wait, callback) {
+            let timer;
+            return function (value) {
+                if (!timer) {
+                    timer = setTimeout(() => {
+                        callback(value)
+                        // 执行一次，时间段内的都不执行
+                        timer = null
+                    }, wait)
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

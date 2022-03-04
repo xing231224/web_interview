@@ -1,0 +1,66 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-10-14 09:15:19
+ * @LastEditTime: 2021-10-14 10:52:22
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \web面试题手写\proxy.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let obj = {
+            a: 0,
+            b: 0
+        }
+        // 反射 Reflect
+        function myProxy(obj) {
+            return new Proxy(obj, {
+                name: "李四",
+                // 读取对象
+                get(target, propsName) {
+                    console.log(`读取了${propsName}属性！！！`);
+                    console.log(target, propsName);
+                    // return target[propsName] 
+                    console.log(this);
+                    return Reflect.get(target, propsName)
+                },
+                // 修改\添加对象属性
+                set(target, propsName, value) {
+                    console.log(`修改了属性${propsName}，值为${value}！！！`);
+                    console.log(target, propsName, value);
+                    // return target[propsName] = value
+                    return Reflect.set(target, propsName, value)
+                },
+                // 删除对象属性
+                deleteProperty(target, propsName) {
+                    console.log(target, propsName);
+                    // return delete target[propsName]
+                    return Reflect.deleteProperty(target, propsName)
+                },
+            })
+        }
+        let p = myProxy(obj)
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
