@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li><a onclick="location.href='#/'">1111</a></li>
+        <li><a href="#/admin">2222</a></li>
+        <li><a onclick="location.href='#/server'">3333</a></li>
+    </ul>
+    <div id="div">dddd</div>
+    <script>
+        function Router(){
+            this.routes={}
+            this.cur=''
+
+            this.route=function(path,fn){
+                this.routes[path]=fn||function(){}
+            }
+            this.zhix=function(){
+                this.cur=location.hash.slice(1)||'/'
+                this.routes[this.cur]()
+            }
+            this.init=function(){
+                window.addEventListener('load',this.zhix.bind(this))
+                window.addEventListener('hashchange',this.zhix.bind(this))
+            }
+        }
+        let res=document.getElementById('div')
+        let R=new Router()
+        //触发监听
+        R.init()
+        //添加回调函数
+        R.route('/',function(){
+            res.style.backgroundColor='pink'
+            res.innerHTML='11111'
+        })
+        R.route('/admin',function(){
+            res.style.backgroundColor='blue'
+            res.innerHTML='22222'
+        })
+        R.route('/server',function(){
+            res.style.backgroundColor='pink'
+            res.innerHTML='333333'
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "promises-aplus-tests": "^2.1.2"
+  }
+}

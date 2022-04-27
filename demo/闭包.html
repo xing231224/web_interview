@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function f1() {
+                var a = 2;
+                function f2() {
+                    a++;
+                    console.log(a);
+                }
+                return f2;
+            }
+            var f = f1();
+            f();
+            let list = [...document.querySelectorAll("*")];
+            console.log(new Set(list.map((v) => v.tagName.toLowerCase())));
+        </script>
+    </body>
+</html>
