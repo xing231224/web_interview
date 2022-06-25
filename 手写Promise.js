@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2022-03-02 10:15:33
- * @LastEditTime: 2022-03-02 11:55:31
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-06-07 11:13:29
+ * @LastEditors: xing 1981193009@qq.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \web面试题手写\手写Promise.js
  */

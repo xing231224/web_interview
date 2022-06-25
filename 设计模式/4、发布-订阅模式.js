@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2022-03-08 10:26:52
- * @LastEditTime: 2022-03-08 11:15:25
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-06-20 14:06:34
+ * @LastEditors: xing 1981193009@qq.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \web面试题手写\设计模式\4、发布-订阅模式.js
  */
@@ -48,10 +48,6 @@ function user1(content) {
 }
 let eventEm = new EventEmitter()
 eventEm
-
-
-
-
 
 
 
