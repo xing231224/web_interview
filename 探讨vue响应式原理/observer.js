@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-09-27 10:40:05
- * @LastEditTime: 2021-09-27 15:31:21
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-02-13 09:35:38
+ * @LastEditors: xing 1981193009@qq.com
  * @Description: In User Settings Edit
  * @FilePath: \web面试题手写\探讨vue响应式原理\observer.js
  */
@@ -57,8 +57,8 @@ function def(obj, key, value) {
     get() {
       console.log(`${key}被读取了`);
       dep.depend(); // 在getter 中收集依赖
-      if(childOb){
-          childOb.dep.depend()
+      if (childOb) {
+        childOb.dep.depend()
       }
       return value;
     },
@@ -76,16 +76,16 @@ function def(obj, key, value) {
  * 尝试为value创建一个Observer实例，如果创建成功，直接返回新创建的Observer实例
  * 如果value 已经存在一个Observer实例，则直返回它
 */
-export function observe(value,asRootData){
-    if(!isObject(value) || value instanceof VNode)return;
-    let ob 
-    if(hasOwn(value,'__ob__')&& value.__ob__ instanceof Observer){
-        ob = value.__ob__
+export function observe(value, asRootData) {
+  if (!isObject(value) || value instanceof VNode) return;
+  let ob
+  if (hasOwn(value, '__ob__') && value.__ob__ instanceof Observer) {
+    ob = value.__ob__
 
-    }else{
-        ob = new Observer(value)
-    }
-    return ob
+  } else {
+    ob = new Observer(value)
+  }
+  return ob
 }
 
 

@@ -250,11 +250,11 @@
         </p>
         <input type="text" v-model="name">
         <button @click="changeClick">变成zz</button>
-        
+
     </div>
 
     <script>
-        new SelfVue({
+        const vm = new SelfVue({
             el: "#name",
             data: {
                 name: "喜羊羊",
@@ -271,8 +271,8 @@
                     this.title = "||ヽ(*￣▽￣*)ノミ|Ю"
                 }, 2000)
             },
-
         })
+        console.log(vm);
     </script>
 
 </body>

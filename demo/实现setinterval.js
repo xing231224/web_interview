@@ -1,19 +1,19 @@
 function mySetInterval(fn, timeout) {
-    var t={flag:true}
+    var t = { flag: true }
     //递归
-    function dd(){
-        if(t.flag){
+    function dd() {
+        if (t.flag) {
             fn()
-            setTimeout(dd,timeout)
-        } 
+            setTimeout(dd, timeout)
+        }
     }
     //触发
-    setTimeout(dd,timeout)
+    setTimeout(dd, timeout)
     return t
-  }
-  
-let i=0
-let t=mySetInterval(function(){
-      console.log(i++)
-  },500)
+}
+
+let i = 0
+let t = mySetInterval(function () {
+    console.log(i++)
+}, 500)
 
