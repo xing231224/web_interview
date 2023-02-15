@@ -34,9 +34,6 @@ export function initMixin(Vue) {
             }
             console.log(template);
         }
-
-
-
         // script 标签引用的vue.global.js 这个编译过程是在浏览器运行的
         // 
     }
