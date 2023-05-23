@@ -10,7 +10,6 @@ const startTagClose = /^\s*(\/?)>/;
 // vue3 采用的不是使用正则
 // 对模板进行编译处理
 export function parseHTML(html) {
-
     const ELEMENT_TYPE = 1, TEXT_TYPE = 3;
     const stack = [];  // 用于存放元素的
     let currentParent, root; // 指向的是栈中的最后一个
@@ -72,11 +71,8 @@ export function parseHTML(html) {
             }
             return match
         }
-
         return false; //不是开始标签
     }
-
-
     // html 最开始肯定是个 <
     while (html) {
         // 如果textEnd 为0 说明是一个开始标签或者结束标签

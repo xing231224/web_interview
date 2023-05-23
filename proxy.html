@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-10-14 09:15:19
- * @LastEditTime: 2022-07-22 10:43:55
+ * @LastEditTime: 2023-04-24 16:15:31
  * @LastEditors: xing 1981193009@qq.com
  * @Description: In User Settings Edit
  * @FilePath: \web面试题手写\proxy.html
@@ -28,9 +28,9 @@
             return new Proxy(obj, {
                 name: "李四",
                 // 读取对象
-                get(target, propsName,receiver) {
+                get(target, propsName, receiver) {
                     console.log(`读取了${propsName}属性！！！`);
-                    console.log(target, propsName,receiver);
+                    console.log(target, propsName, receiver);
                     // return target[propsName] 
                     console.log(this);
                     return Reflect.get(target, propsName)

@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-09-27 11:18:20
- * @LastEditTime: 2021-09-27 14:12:44
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-04-27 14:03:37
+ * @LastEditors: xing 1981193009@qq.com
  * @Description: In User Settings Edit
  * @FilePath: \web面试题手写\探讨vue响应式原理\watcher.js
  */
@@ -13,17 +13,17 @@ export default class Watcher {
     this.getter = parsePath(exp);
     this.value = this.get()
   }
-  get(){
-    window.target = this 
-    const vm  = this.vm
-    let value = this.getter.call(vm,vm)
+  get() {
+    window.target = this
+    const vm = this.vm
+    let value = this.getter.call(vm, vm)
     window.target = undefined;
     return value
   }
-  update(){
-      const oldValue = this.value
-      this.value = this.get()
-      this.cb.call(this.vm,this.value,oldValue)
+  update() {
+    const oldValue = this.value
+    this.value = this.get()
+    this.cb.call(this.vm, this.value, oldValue)
   }
 }
 
