@@ -66,3 +66,55 @@ const obj = str.split(',').reduce((accumulator, currentValue) => {
 /** 将对象转换为查询字符串 */
 const params = { foo: 'bar', baz: 42 };
 const queryString = Object.entries(params).reduce((accumulator, [key, value]) => `${accumulator}${key}=${value}&`, '?').slice(0, -1)
+
+/** 打印斐波那契数列 */
+const fibonacci = n => {
+    return [...Array(n)].reduce((accumulator, currentValue, index) => {
+        if (index < 2) {
+            accumulator.push(index)
+        } else {
+            accumulator.push(accumulator[index - 1] + accumulator[index - 2])
+        }
+        return accumulator
+    }, [])
+}
+
+/** 检查字符串是否是回文字符串 */
+const str2 = 'racecar';
+const isPalindrome = str2.split('').reduce((accumulator, currentValue, index, array) => {
+    return accumulator && currentValue === array[array.length - index - 1]
+}, true)
+
+/** 检查括号是否匹配 */
+const str3 = "(()()())";
+const balanced = str3.split('').reduce((accumulator, currentValue) => {
+    if (currentValue === '(') {
+        accumulator++;
+    } else if (currentValue === ')') {
+        accumulator--;
+    }
+}, 0) === 0
+
+/** 递归获取对象属性 */
+const user = {
+    info: {
+        name: "Jason",
+        address: { home: "Shaanxi", company: "Xian" }
+    }
+}
+function get(config, path, defaultVal) {
+    return path.split('.').reduce((config, name) => config[name], config) || defaultVal;
+}
+
+
+
+
+/** 手写reduce */
+
+function myReduce(arr, callback, initialValue) {
+    let accumulator = initialValue === undefined ? arr[0] : initialValue
+    for (let i = initialValue === undefined ? 1 : 0; i < arr.length; i++) {
+        accumulator = callback(accumulator, arr[i], i, arr)
+    }
+    return accumulator;
+}

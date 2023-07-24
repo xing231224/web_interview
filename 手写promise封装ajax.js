@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2022-03-04 15:41:53
- * @LastEditTime: 2022-03-04 15:47:45
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-07-13 16:10:55
+ * @LastEditors: xing 1981193009@qq.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \web面试题手写\手写promise封装ajax.js
  */
@@ -36,7 +36,9 @@ function request({ url, type, data, async }) {
         }
 
         xhr.onreadystatechange = function () {
-            if (xhr.redyState == 4 && xhr.status == 200) {
+
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
                 resolve(xhr.responseText);
             }
         }
