@@ -1,6 +1,6 @@
 function jsonStringify(data) {
     let dataType = typeof data;
-    
+
     if (dataType !== 'object') {
         let result = data;
         //data 可能是 string/number/null/undefined/boolean
@@ -33,7 +33,7 @@ function jsonStringify(data) {
             });
             result = "[" + result + "]";
             return result.replace(/'/g, '"');
-            
+
         } else {
             //普通对象
             /**

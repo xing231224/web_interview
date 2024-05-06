@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-11-16 11:39:52
- * @LastEditTime: 2021-11-16 18:01:06
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-04-03 09:42:46
+ * @LastEditors: xing 1981193009@qq.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \web面试题手写\排序\插入排序.js
  */

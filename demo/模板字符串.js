@@ -1,15 +1,15 @@
 
-function dd(template,data){
+function dd(template, data) {
     //正则
-    const reg=/\{\{(\w+)\}\}/
+    const reg = /\{\{(\w+)\}\}/
     //匹配字符串中是否含有
-    if(reg.test(template)){
+    if (reg.test(template)) {
         //获得花括号内的字符串
-        let name=reg.exec(template)[1]
+        let name = reg.exec(template)[1]
         //替换
-        template=template.replace(reg,data[name])
+        template = template.replace(reg, data[name])
         //递归处理
-        return dd(template,data)
+        return dd(template, data)
     }
     //如果没有匹配，则直接返回
     return template

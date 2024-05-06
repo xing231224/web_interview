@@ -14,38 +14,38 @@
     </ul>
     <div id="div">dddd</div>
     <script>
-        function Router(){
-            this.routes={}
-            this.cur=''
+        function Router() {
+            this.routes = {}
+            this.cur = ''
 
-            this.route=function(path,fn){
-                this.routes[path]=fn||function(){}
+            this.route = function (path, fn) {
+                this.routes[path] = fn || function () { }
             }
-            this.zhix=function(){
-                this.cur=location.hash.slice(1)||'/'
+            this.zhix = function () {
+                this.cur = location.hash.slice(1) || '/'
                 this.routes[this.cur]()
             }
-            this.init=function(){
-                window.addEventListener('load',this.zhix.bind(this))
-                window.addEventListener('hashchange',this.zhix.bind(this))
+            this.init = function () {
+                window.addEventListener('load', this.zhix.bind(this))
+                window.addEventListener('hashchange', this.zhix.bind(this))
             }
         }
-        let res=document.getElementById('div')
-        let R=new Router()
+        let res = document.getElementById('div')
+        let R = new Router()
         //触发监听
         R.init()
         //添加回调函数
-        R.route('/',function(){
-            res.style.backgroundColor='pink'
-            res.innerHTML='11111'
+        R.route('/', function () {
+            res.style.backgroundColor = 'pink'
+            res.innerHTML = '11111'
         })
-        R.route('/admin',function(){
-            res.style.backgroundColor='blue'
-            res.innerHTML='22222'
+        R.route('/admin', function () {
+            res.style.backgroundColor = 'blue'
+            res.innerHTML = '22222'
         })
-        R.route('/server',function(){
-            res.style.backgroundColor='pink'
-            res.innerHTML='333333'
+        R.route('/server', function () {
+            res.style.backgroundColor = 'pink'
+            res.innerHTML = '333333'
         })
     </script>
 </body>

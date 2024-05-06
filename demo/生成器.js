@@ -1,4 +1,4 @@
-function* num(){
+function* num() {
     yield 1
     yield 2
     yield 3
@@ -6,6 +6,6 @@ function* num(){
     return 5
 }
 
-for(let i of num()){
+for (let i of num()) {
     console.log(i)   //1,2,3,4
 }

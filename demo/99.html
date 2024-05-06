@@ -8,31 +8,31 @@
 </head>
 <body>
     <script type='text/javascript'>
-       //父类
-function Per(name,sex){
-    //构造函数继承
-    this.name=name
-    this.sex=sex
-}
-//原型链继承
-Per.prototype.getname=function(){
-    console.log(this.name,this.sex)
-}
-//子类
-function _child(name,sex){
-    //构造函数继承
-    Per.call(this,name,sex)  
-}
-//原型链继承
-_child.prototype=new Per()
-_child.prototype.constructor=_child
-console.log("####",_child.prototype.constructor)
-    
-//子类的实例可以调用父类的属性，和父类原型上的方法
-let c1=new _child('hhhh','boy')
-c1.getname()
+        //父类
+        function Per(name, sex) {
+            //构造函数继承
+            this.name = name
+            this.sex = sex
+        }
+        //原型链继承
+        Per.prototype.getname = function () {
+            console.log(this.name, this.sex)
+        }
+        //子类
+        function _child(name, sex) {
+            //构造函数继承
+            Per.call(this, name, sex)
+        }
+        //原型链继承
+        _child.prototype = new Per()
+        _child.prototype.constructor = _child
+        console.log("####", _child.prototype.constructor)
 
-       
+        //子类的实例可以调用父类的属性，和父类原型上的方法
+        let c1 = new _child('hhhh', 'boy')
+        c1.getname()
+
+
     </script>
 </body>
 </html>

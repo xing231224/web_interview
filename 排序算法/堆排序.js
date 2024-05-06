@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-11-17 11:56:48
- * @LastEditTime: 2021-11-17 11:59:04
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-04-01 14:48:38
+ * @LastEditors: xing 1981193009@qq.com
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \web面试题手写\排序\堆排序.js
  */
@@ -46,7 +46,7 @@ let heapSort = (arr) => {
   for (let i = Math.floor(len / 2); i >= 0; i--) {
     adjustHeap(arr, i);
   }
-  // console.log('大顶堆：', arr) // 调试时这里也是一个关键点
+  console.log('大顶堆：', arr) // 调试时这里也是一个关键点
   // 堆排序
   for (let i = len - 1; i > 0; i--) {
     // 将堆顶（树根）置换到相应位置

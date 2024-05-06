@@ -9,21 +9,21 @@
 <body>
     <script>
         function dd(wait) {
-        let prev = +new Date();
-        let fps = 0;
-        function loop() {
-            let now = +new Date();
-            if (now - prev >= wait) {
-                console.log(fps);
-            } else {
-                fps++;
-                window.requestAnimationFrame(loop)
+            let prev = +new Date();
+            let fps = 0;
+            function loop() {
+                let now = +new Date();
+                if (now - prev >= wait) {
+                    console.log(fps);
+                } else {
+                    fps++;
+                    window.requestAnimationFrame(loop)
+                }
             }
+            window.requestAnimationFrame(loop);
         }
-        window.requestAnimationFrame(loop);
-}
 
-dd(1000)
+        dd(1000)
     </script>
 </body>
 </html>

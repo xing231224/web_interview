@@ -1,19 +1,19 @@
-String.prototype.indexof=function(value,index=0){
-    
+String.prototype.indexof = function (value, index = 0) {
+
     //没有传入value,强制转换
-    if(value==null){
-        value="undefined" 
+    if (value == null) {
+        value = "undefined"
     }
     //小于0
-    if(index<0){
-        index=0
+    if (index < 0) {
+        index = 0
     }
     //value为空
     if (value == '') {
         return index >= this.length ? this.length : index;
     }
     //大于等于长度
-    if(index>=this.length){
+    if (index >= this.length) {
         return -1
     }
 
@@ -36,7 +36,7 @@ String.prototype.indexof=function(value,index=0){
             }
             if (i == value.length) {
                 //对比全部，返回起始下标
-                return k-1;
+                return k - 1;
             }
         }
         k++;
@@ -44,9 +44,9 @@ String.prototype.indexof=function(value,index=0){
     return -1;
 }
 
-let str='zxcvbnm'
-console.log(str.indexof('',4))//4
-console.log(str.indexof('',10))//7
-console.log(str.indexof('z',23))  //-1
-console.log(str.indexof('z',-4)) //0
+let str = 'zxcvbnm'
+console.log(str.indexof('', 4))//4
+console.log(str.indexof('', 10))//7
+console.log(str.indexof('z', 23))  //-1
+console.log(str.indexof('z', -4)) //0
 console.log(str.indexof())  //-1

@@ -1,13 +1,13 @@
-let count=1
-let container=document.getElementById('container')
-let btn=document.getElementById('btn')
-function addcount(){
-    container.innerHTML=count++
+let count = 1
+let container = document.getElementById('container')
+let btn = document.getElementById('btn')
+function addcount() {
+    container.innerHTML = count++
 }
-let action=dd(addcount,1000,{a:true,b:false})
-container.onmousemove=action
+let action = dd(addcount, 1000, { a: true, b: false })
+container.onmousemove = action
 //删除
-btn.onclick=function(){
+btn.onclick = function () {
     action.cancel()
 }
 
@@ -46,54 +46,54 @@ function dd(func,wait){
     }
 }*/
 
-function dd(func,wait,options){
-    let t,athis,args
-    let old=0
-    if(!options) options={}
+function dd(func, wait, options) {
+    let t, athis, args
+    let old = 0
+    if (!options) options = {}
 
-    let callfunc=function(){
-        athis=this
-        args=arguments
+    let callfunc = function () {
+        athis = this
+        args = arguments
 
         //时间戳
-        let now=+new Date()
+        let now = +new Date()
         //old为0，第一次调用，但是false禁止第一次调用
         //如果为false,不进入时间戳的处理
-        if(!old && options.a===false){
-            old=now
+        if (!old && options.a === false) {
+            old = now
         }
-        let rema=wait-(now-old)  //下次触发剩余时间
-        if(rema<=0 || rema>wait){
+        let rema = wait - (now - old)  //下次触发剩余时间
+        if (rema <= 0 || rema > wait) {
             //清除定时器
-            if(t){
+            if (t) {
                 clearTimeout(t)
-                t=null
+                t = null
             }
 
-            old=now
-            func.apply(athis,args)
+            old = now
+            func.apply(athis, args)
             if (!timeout) context = args = null;
 
-        //定时器
-        //只有定时器为null,上一次执行完才可以再次进入
-        //如果为false,不进入定时器的处理
-        }else if(!t && options.b !== false){    
-            t=setTimeout(()=>{
+            //定时器
+            //只有定时器为null,上一次执行完才可以再次进入
+            //如果为false,不进入定时器的处理
+        } else if (!t && options.b !== false) {
+            t = setTimeout(() => {
 
                 //处理old
-                old=options.a===false?0:new Date().getTime()
+                old = options.a === false ? 0 : new Date().getTime()
 
-                t=null
-                func.apply(athis,args)
+                t = null
+                func.apply(athis, args)
                 if (!timeout) context = args = null;
-            },rema) //时间戳触发后的剩余时间（触发定时器）
+            }, rema) //时间戳触发后的剩余时间（触发定时器）
         }
 
     }
-    callfunc.cancel=function(){
+    callfunc.cancel = function () {
         clearTimeout(t)
-        old=0
-        t=null
+        old = 0
+        t = null
     }
     return callfunc
 }
