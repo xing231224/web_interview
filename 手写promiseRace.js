@@ -15,5 +15,5 @@ const promiseRace = function (args) {
 let a = new Promise(resolve => resolve(1))
 let b = new Promise((resolve, reject) => reject(2))
 let c = new Promise(resolve => resolve(3))
-let p = promiseRace([b])
+let p = promiseRace([a, b, c])
 console.log(p);
